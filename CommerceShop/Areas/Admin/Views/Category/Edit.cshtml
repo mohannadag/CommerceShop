@@ -1,0 +1,160 @@
+﻿@using CommerceShop.Areas.Admin.Models.Catalog
+@using Commerce.Core.Settings; 
+
+@model CategoryViewModel
+
+@{
+    //page title
+    ViewBag.PageTitle = "Create new category";
+    ViewBag.CategoryListItem = Model.CategoryListItem;
+}
+<a>@await Html.PartialAsync("_SelectLanguagePartial",Model.Culture)</a>
+<form asp-controller="Category" asp-action="edit" method="post" id="category-form">
+    <div class="content-header clearfix">
+        <h1 class="float-left">
+            Add new
+            <small>
+                <i class="fas fa-arrow-circle-left"></i>
+                <a asp-action="index">Back to List</a>
+            </small>
+        </h1>
+        <div class="float-right">
+            <button type="submit" name="save" class="btn btn-primary">
+                <i class="far fa-save"></i>
+                Save
+            </button>
+            <button type="submit" name="save-continue" class="btn btn-primary">
+                <i class="far fa-save"></i>
+                Save and Continue
+            </button>
+        </div>
+    </div>
+
+    @* info card *@
+    <div id="accordion3">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                Category Info
+                <button type="button" class="btn btn-link float-right" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"></button>
+            </div>
+            <input asp-for="Guid" class="form-control" placeholder="Ticket Subject" hidden />
+            <input asp-for="Culture" class="form-control" placeholder="Ticket Subject" hidden />
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion3">
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label asp-for="Name" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <input asp-for="Name" class="form-control" placeholder="Ticket Subject" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="Description" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <textarea asp-for="Description" class="form-control" placeholder="Request details"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                    </div>
+                    @if(Model.Culture == Language.DefultLanguage)
+                    {
+                        <div class="form-group row">
+                            <label asp-for="ParentCategoryId" class="col-sm-2 col-form-label"></label>
+                            <div class="col-sm-10">
+                                <select class="form-control" asp-for="ParentCategoryId" asp-items="@Model.CategoryListItem">
+                                    <option value=0>Please select one</option>
+                                </select>
+                                <span asp-validation-for="ParentCategoryId" class="text-danger"></span>
+                            </div>
+                        </div>
+                    }
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @* display card *@
+    <div id="accordion1">
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                Display
+                <button type="button" class="btn btn-link float-right" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"></button>
+            </div>
+            <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion1">
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label asp-for="DisplayOrder" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <input asp-for="DisplayOrder" class="form-control" placeholder="Ticket Subject" />
+                            <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="ShowOnHomepage" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <textarea asp-for="ShowOnHomepage" class="form-control" placeholder="Request details"></textarea>
+                            <span asp-validation-for="ShowOnHomepage" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="IncludeInTopMenu" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <input asp-for="IncludeInTopMenu" class="form-control" placeholder="Location" />
+                            <span asp-validation-for="IncludeInTopMenu" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    @* seo card *@
+    <div id="accordion2">
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                SEO
+                <button type="button" class="btn btn-link btn float-right" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree"></button>
+            </div>
+            <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordion2">
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label asp-for="MetaTitle" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <input asp-for="MetaTitle" class="form-control" placeholder="Ticket Subject" />
+                            <span asp-validation-for="MetaTitle" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="MetaDescription" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <textarea asp-for="MetaDescription" class="form-control" placeholder="Request details"></textarea>
+                            <span asp-validation-for="MetaDescription" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="MetaKeywords" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <input asp-for="MetaKeywords" class="form-control" placeholder="Location" />
+                            <span asp-validation-for="MetaKeywords" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+    </div>
+</form>

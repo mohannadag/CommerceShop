@@ -1,0 +1,154 @@
+﻿@using CommerceShop.Areas.Admin.Models.Product
+
+@model ProductViewModel
+
+@{
+    //page title
+    ViewBag.PageTitle = "Create new Product";
+}
+
+<form enctype="multipart/form-data" asp-controller="Product" asp-action="Edit" method="post" id="Product-form">
+    <div class="content-header clearfix">
+        <h1 class="float-left">
+            Add new
+            <small>
+                <i class="fas fa-arrow-circle-left"></i>
+                <a asp-action="index">Back to List</a>
+            </small>
+        </h1>
+        <div class="float-right">
+            <button type="submit" name="save" class="btn btn-primary">
+                <i class="far fa-save"></i>
+                Save
+            </button>
+            <button type="submit" name="save-continue" class="btn btn-primary">
+                <i class="far fa-save"></i>
+                Save and Continue
+            </button>
+        </div>
+    </div>
+
+    @* info card *@
+    <div id="accordion3">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                Product Info
+                <button type="button" class="btn btn-link float-right" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"></button>
+            </div>
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion3">
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label asp-for="Name" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <input asp-for="Name" class="form-control" placeholder="Ticket Subject" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="ShortDescription" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <textarea asp-for="ShortDescription" class="form-control" placeholder="Request details"></textarea>
+                            <span asp-validation-for="ShortDescription" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="FullDescription" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <textarea asp-for="FullDescription" class="form-control" placeholder="Request details"></textarea>
+                            <span asp-validation-for="FullDescription" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="CategoryId" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <select class="form-control" asp-for="CategoryId" asp-items="@ViewBag.categories">
+                                <option value="">Please select one</option>
+                            </select>
+                            <span asp-validation-for="CategoryId" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @* display card *@
+    <div id="accordion1">
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                Display
+                <button type="button" class="btn btn-link float-right" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"></button>
+            </div>
+            <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion1">
+                <div class="card-body">
+                    @*<div class="form-group row">
+                        <label asp-for="ShowOnHomepage" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <input asp-for="ShowOnHomepage" class="form-control " placeholder="Ticket Subject" />
+                            <span asp-validation-for="ShowOnHomepage" class="text-danger"></span>
+                        </div>
+                    </div>*@
+
+                    <div class="col-4">
+                        <div class="form-check m-1">
+                            <input asp-for="ShowOnHomepage" class="form-check-input" />
+                            <label asp-for="ShowOnHomepage" class="form-check-label">
+                                
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    @* seo card *@
+    <div id="accordion2">
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                SEO
+                <button type="button" class="btn btn-link btn float-right" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree"></button>
+            </div>
+            <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordion2">
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label asp-for="MetaTitle" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <input asp-for="MetaTitle" class="form-control" placeholder="Ticket Subject" />
+                            <span asp-validation-for="MetaTitle" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="MetaDescription" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <textarea asp-for="MetaDescription" class="form-control" placeholder="Request details"></textarea>
+                            <span asp-validation-for="MetaDescription" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="MetaKeywords" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <input asp-for="MetaKeywords" class="form-control" placeholder="Location" />
+                            <span asp-validation-for="MetaKeywords" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Address.cs" />
+    <Compile Remove="BaseEntity.cs" />
+    <Compile Remove="Category.cs" />
+    <Compile Remove="CategoryRepo.cs" />
+    <Compile Remove="ICategoryRepo.cs" />
+    <Compile Remove="IProductRepo.cs" />
+    <Compile Remove="IStoreRepo.cs" />
+    <Compile Remove="Migrations\20210813151956_addParentCategoryId-Product.cs" />
+    <Compile Remove="Migrations\20210813151956_addParentCategoryId-Product.Designer.cs" />
+    <Compile Remove="Migrations\20210813153152_addParentCategory-Product.cs" />
+    <Compile Remove="Migrations\20210813153152_addParentCategory-Product.Designer.cs" />
+    <Compile Remove="Migrations\20210813153438_addParentCategory-Product.cs" />
+    <Compile Remove="Migrations\20210813153438_addParentCategory-Product.Designer.cs" />
+    <Compile Remove="Migrations\20210813153646_addParentCategory-Product.cs" />
+    <Compile Remove="Migrations\20210813153646_addParentCategory-Product.Designer.cs" />
+    <Compile Remove="Migrations\20210813154122_addCategoryId-Product.cs" />
+    <Compile Remove="Migrations\20210813154122_addCategoryId-Product.Designer.cs" />
+    <Compile Remove="Migrations\20210908183240_addingCultureToProduct.cs" />
+    <Compile Remove="Migrations\20210908183240_addingCultureToProduct.Designer.cs" />
+    <Compile Remove="Migrations\20210908185428_addingCultureToProduct1.cs" />
+    <Compile Remove="Migrations\20210908185428_addingCultureToProduct1.Designer.cs" />
+    <Compile Remove="Picture.cs" />
+    <Compile Remove="Product.cs" />
+    <Compile Remove="ProductCategory.cs" />
+    <Compile Remove="ProductPicture.cs" />
+    <Compile Remove="ProductRepo.cs" />
+    <Compile Remove="ProductTag.cs" />
+    <Compile Remove="Store.cs" />
+    <Compile Remove="StoreRepo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.12" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="5.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core.Commerce\Commerce.Core.csproj" />
+  </ItemGroup>
+
+</Project>
